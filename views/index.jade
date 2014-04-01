@@ -1,6 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Code Camp 2014 SideCase!
+  p Welcome to the code camp sidecase site. This site is here to help you find a team to work with.
+    Have a look at the project below and if any of them seem to interest you then click join!
+  div(ng-controller="SidecaseCtrl")
+    ul
+      li(ng-repeat="project in projects")
+        span {{project.name}}
 
+block scripts
+  script(src='/js/home.js')

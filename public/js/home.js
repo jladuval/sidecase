@@ -1,1 +1,6 @@
-var home = function(projects)
+function SidecaseCtrl($scope){
+  $scope.projects = [
+    {name: 'project1'},
+    {name: 'project2'}
+  ];
+}
