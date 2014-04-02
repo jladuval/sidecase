@@ -6,21 +6,18 @@ block content
             .section-title.reg-header.animated.fadeInDown.row
                 h3 Welcome to the Code Camp 2014 Project Showcase
                 h5 We want Christchurch coders to try new things and push the scene forward. Join one of the exciting projects below or make a new one yourself. 
-                br
-                a.btn.btn-success.blue-btn.pull-left.small-font(href='#')
+                a.btn.btn-success.blue-btn.pull-left.small-font.offset-top(href='#')
                     i.icon-info
                     &nbsp; &nbsp; I'm going to need some more info buddy
-                a.btn.btn-success.blue-btn.pull-right.small-font(href='#')
+                a.btn.btn-success.blue-btn.pull-right.small-font.offset-top(href='#')
                     |Show me the prizes! &nbsp; 
                     i.icon-trophy
             .registration-form-action.clearfix.animated.fadeInUp.row
                 p.pull-left
                     i.icon-chevron-down
                     &nbsp; &nbsp; Take a look at some of the projects 
-                    strong
-                        |or......
                 a.btn.btn-success.pull-right.green-btn(href='#')
-                    |Add your project &nbsp; 
+                    |Or add your project &nbsp; 
                     i.icon-github
             div(ng-controller="SidecaseCtrl")
                 .login-form-links.link1.animated.fadeInUp.row(ng-repeat="project in projects")
