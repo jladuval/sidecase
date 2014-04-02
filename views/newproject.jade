@@ -1,0 +1,59 @@
+extends layout
+
+block content
+    .registration-form-section
+        form
+            .section-title.reg-header.animated.fadeInDown
+                h3 Get your Account Here
+            .clearfix
+               .col-sm-6.registration-left-section.animated.fadeInUp
+                    .reg-content
+                        .textbox-wrap
+                            .input-group
+                                span.input-group-addon
+                                    i.icon-user.icon-color
+                                input.form-control                               
+                        .textbox-wrap
+                            .input-group
+                                span.input-group-addon 
+                                    i.icon-user.icon-color
+                                input.form-control
+                        .textbox-wrap
+                            .input-group
+                                span.input-group-addon 
+                                    i.icon-envelope.icon-color
+                                input.form-control
+                .col-sm-6.registration-right-section.animated.fadeInUp
+                    .reg-content
+                        .textbox-wrap
+                            .input-group
+                                span.input-group-addon 
+                                    i.icon-user.icon-color
+                                input.form-control
+                        .textbox-wrap
+                            .input-group
+                                span.input-group-addon 
+                                    i.icon-key.icon-color
+                                input.form-control
+                        .textbox-wrap
+                            .input-group
+                                span.input-group-addon 
+                                    i.icon-key.icon-color
+                                input.form-control
+
+
+            .registration-form-action.clearfix.animated.fadeInUp
+                a.btn.btn-success.pull-left.blue-btn(href='#')
+                    i.icon-chevron-left 
+                    &nbsp; &nbsp; Back To Login
+                button.btn.btn-success.pull-right.green-btn(type='submit')
+                    |Register Now &nbsp; 
+                    i.icon-chevron-right
+
+  div(ng-controller="SidecaseCtrl")
+    ul
+      li(ng-repeat="project in projects")
+        span {{project.name}}
+
+block scripts
+  script(src='/js/home.js')

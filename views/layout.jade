@@ -3,13 +3,13 @@ html(ng-app)
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/forms.css')
     script(src='/js/modernizr.js')
     link(rel='stylesheet', href='/stylesheets/animate.min.css')
     link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:400,300', type='text/css')
-  body(style="background-color: grey")
+  body.colorBg
     .container.eternity-form
       block content
     script(src='https://code.jquery.com/jquery-2.1.0.min.js')
