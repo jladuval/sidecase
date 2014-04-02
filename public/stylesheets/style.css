@@ -27,3 +27,7 @@
 body{
     min-height: 100vh;
 }
+
+.small-font{
+    font-size:12px;
+}

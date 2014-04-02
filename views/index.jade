@@ -3,27 +3,27 @@ extends layout
 block content
     .registration-form-section
         form
-            .section-title.reg-header.animated.fadeInDown
-                h3 Welcome to the Code Camp 2014 Side Projectathon
-            .registration-form-action.clearfix.animated.fadeInUp
+            .section-title.reg-header.animated.fadeInDown.row
+                h3 Welcome to the Code Camp 2014 Project Showcase
+                h5 We want Christchurch coders to try new things and push the scene forward. Join one of the exciting projects below or make a new one yourself. 
+                br
+                a.btn.btn-success.blue-btn.pull-left.small-font(href='#')
+                    i.icon-info
+                    &nbsp; &nbsp; I'm going to need some more info buddy
+                a.btn.btn-success.blue-btn.pull-right.small-font(href='#')
+                    |Show me the prizes! &nbsp; 
+                    i.icon-trophy
+            .registration-form-action.clearfix.animated.fadeInUp.row
                 p.pull-left
                     i.icon-chevron-down
                     &nbsp; &nbsp; Take a look at some of the projects 
                     strong
                         |or......
-                button.btn.btn-success.pull-right.green-btn(type='submit')
+                a.btn.btn-success.pull-right.green-btn(href='#')
                     |Add your project &nbsp; 
                     i.icon-github
-            .clearfix
-               .col-sm-12.registration-left-section.animated.fadeInUp
-                    .reg-content
-                      div(ng-controller="SidecaseCtrl")
-                        ul
-                          li(ng-repeat="project in projects")
-                            span {{project.name}}
-            
-
-
-
-block scripts
+            div(ng-controller="SidecaseCtrl")
+                .login-form-links.link1.animated.fadeInUp.row(ng-repeat="project in projects")
+                    {{project.name}}      
+block scriptshead
   script(src='/js/home.js')
