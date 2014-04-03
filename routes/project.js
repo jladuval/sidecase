@@ -1,7 +1,6 @@
 var mongoose = require('mongoose-q')(require('mongoose')),
     ProjectSchema = require('../data/projectschema.js').Project,
     conf = require('../conf.js'),
-    getRepoRegex = /([^\/]+)$/,
     GitHubApi = require("github"),
     path = require("path"),
     urlparse = require("url");
@@ -28,7 +27,6 @@ exports.getprojects = function(req, res){
         // required
         version: "3.0.0",
         // optional
-        debug: true,
         protocol: "https",
         timeout: 5000
     });
@@ -40,6 +38,7 @@ exports.getprojects = function(req, res){
     ProjectSchema.findQ({})
     .then(function(data){
         var projectsRes = [];
+        var counter =  0;
         for(var i = 0; i < data.length; i++){
             var url = data[i].url;
             var ghpath = urlparse.parse(url).pathname
@@ -51,10 +50,15 @@ exports.getprojects = function(req, res){
                 repo: repo
             },
             function(err, ghres) {
-                console.log(ghres);
+                counter++;
+                if(err == null)
+                    projectsRes.push(ghres);
+                else
+                    console.log(err);
+                if(counter === data.length){
+                    res.json(projectsRes);
+                }
             });
         }       
-        res.json(data);
-        res.end();
     });
 }
