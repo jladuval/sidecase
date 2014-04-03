@@ -33,6 +33,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/getprojects', project.getprojects);
 app.get('/newproject', project.index);
 app.post('/project/save', project.save);
 
