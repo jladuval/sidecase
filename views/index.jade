@@ -8,10 +8,10 @@ block content
                 h5 We want Christchurch coders to try new things and push the scene forward. Join one of the exciting projects below or make a new one yourself. 
                 hr
                 .clearfix
-                    a.btn.btn-success.blue-btn.pull-left.small-font.offset-top-sm(href='#')
+                    a.btn.btn-success.blue-btn.pull-left.small-font.offset-top-sm(href='/about')
                         i.icon-info
                         &nbsp; &nbsp; I'm going to need some more info buddy
-                    a.btn.btn-success.blue-btn.pull-right.small-font.offset-top-sm(href='#')
+                    a.btn.btn-success.blue-btn.pull-right.small-font.offset-top-sm(href='/prizes')
                         |Show me the prizes! &nbsp; 
                         i.icon-trophy
                 hr
@@ -24,6 +24,15 @@ block content
                         i.icon-github
             div(ng-controller="SidecaseCtrl")
                 .login-form-links.link1.animated.fadeInUp.row(ng-repeat="project in projects")
-                    {{project.name}}
+                    .col-sm-6
+                        .col-xs-6(ng-repeat="collaborator in project.collaborators")
+                            a(href='{{collaborator.url}}')
+                                img.max-image(src='{{collaborator.avatar}}')
+                            {{collaborator.name}}
+                    .col-sm-6
+                        a.blue(href='{{project.url}}')
+                            {{project.name}}
+                        p {{project.mainlang}}
+                        p {{project.description}}
 block scriptshead
   script(src='/js/home.js')

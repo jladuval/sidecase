@@ -1,13 +1,19 @@
-function SidecaseCtrl($scope, $timeout){
-    $.get('/getprojects')
-    .done(function(data){
+function SidecaseCtrl($scope, $http){
+    $http.get('/getprojects')
+    .success(function(data){
         $scope.projects = data;
-        console.log(data);
+        for(var i = 0; i < $scope.projects.length; i++){
+            $scope.getCollaborators($scope.projects[i]);
+        }
     });
-  /*$scope.projects = [
-    {name: 'project1'},
-    {name: 'project2'}
-  ];
-  $timeout(function(){
-    $scope.projects.push({name: 'project3'});}, 3000);*/
+
+    $scope.getCollaborators = function(project){
+        $http.get('/collaborators?name='+project.name+'&owner='+project.owner)
+        .success(function(data){
+            for (var i in data){
+                project.collaborators.push(data[i]);
+            }
+            $scope.$apply();
+        });
+    }
 }

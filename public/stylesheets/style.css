@@ -38,3 +38,7 @@ body{
 .offset-top-sm{
     margin-top:5px;
 }
+
+.max-image{
+    width:100%;
+}

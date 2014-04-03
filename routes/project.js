@@ -3,6 +3,7 @@ var mongoose = require('mongoose-q')(require('mongoose')),
     conf = require('../conf.js'),
     GitHubApi = require("github"),
     path = require("path"),
+    Readable = require('stream').Readable,
     urlparse = require("url");
     
 
@@ -22,7 +23,7 @@ exports.save = function(req, res){
     });
 };
 
-exports.getprojects = function(req, res){
+function getGitHub(){
     var github = new GitHubApi({
         // required
         version: "3.0.0",
@@ -35,6 +36,11 @@ exports.getprojects = function(req, res){
         key: conf.githubclientid,
         secret: conf.githubsecret
     }); 
+    return github;
+}
+
+exports.getprojects = function(req, res){
+    var github = getGitHub();
     ProjectSchema.findQ({})
     .then(function(data){
         var projectsRes = [];
@@ -50,9 +56,17 @@ exports.getprojects = function(req, res){
                 repo: repo
             },
             function(err, ghres) {
+
                 counter++;
                 if(err == null)
-                    projectsRes.push(ghres);
+                    projectsRes.push({
+                        owner : ghres.owner.login,
+                        name : ghres.name, 
+                        url : ghres.html_url,
+                        mainlang : ghres.language,
+                        description: ghres.description,
+                        collaborators: []
+                    });
                 else
                     console.log(err);
                 if(counter === data.length){
@@ -60,5 +74,30 @@ exports.getprojects = function(req, res){
                 }
             });
         }       
+    });
+}
+
+exports.collaborators = function(req, res){
+    var github = getGitHub();
+    github.repos.getCollaborators(
+    {
+        user: req.query.owner,
+        repo: req.query.name
+    },
+    function(err, ghres) {
+        if(err){
+            res.end();
+            return;
+        }
+        else
+        var collaborators = [];
+        for(var i = 0; i < ghres.length; i++){
+            collaborators.push({
+                avatar : ghres[i].avatar_url,
+                url : ghres[i].html_url,
+                name: ghres[i].login
+            });
+        }        
+        res.json(collaborators);
     });
 }

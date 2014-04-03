@@ -33,8 +33,11 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/about', routes.about);
+app.get('/prizes', routes.prizes);
 app.get('/getprojects', project.getprojects);
 app.get('/newproject', project.index);
+app.get('/collaborators', project.collaborators);
 app.post('/project/save', project.save);
 
 http.createServer(app).listen(app.get('port'), function(){
