@@ -2,53 +2,35 @@ extends layout
 
 block content
     .registration-form-section
-        form
+        form(action='/project/save', method='POST')
             .section-title.reg-header.animated.fadeInDown
-                h3 Get your Account Here
+                h3.text-center Add a project
+                p Projects need to be hosted on Github(we use the api to get a bunch of info). It's free to sign up for and lets you manage your teams easily.
             .clearfix
-               .col-sm-6.registration-left-section.animated.fadeInUp
+               .col-sm-12.registration-left-section.animated.fadeInUp
                     .reg-content
                         .textbox-wrap
                             .input-group
                                 span.input-group-addon
-                                    i.icon-user.icon-color
-                                input.form-control                               
-                        .textbox-wrap
-                            .input-group
-                                span.input-group-addon 
-                                    i.icon-user.icon-color
-                                input.form-control
+                                    i.icon-github-alt.icon-color
+                                input.form-control(placeholder='Github project url', type='url', name='project')                        
                         .textbox-wrap
                             .input-group
                                 span.input-group-addon 
                                     i.icon-envelope.icon-color
-                                input.form-control
-                .col-sm-6.registration-right-section.animated.fadeInUp
-                    .reg-content
+                                input.form-control(placeholder='Your email',type='email', name='email')
                         .textbox-wrap
                             .input-group
                                 span.input-group-addon 
-                                    i.icon-user.icon-color
-                                input.form-control
-                        .textbox-wrap
-                            .input-group
-                                span.input-group-addon 
-                                    i.icon-key.icon-color
-                                input.form-control
-                        .textbox-wrap
-                            .input-group
-                                span.input-group-addon 
-                                    i.icon-key.icon-color
-                                input.form-control
-
-
+                                    i.icon-group.icon-color
+                                input.form-control(placeholder='Team size (leave blank if you dont care)',type='number', name='teamsize')   
             .registration-form-action.clearfix.animated.fadeInUp
-                a.btn.btn-success.pull-left.blue-btn(href='#')
+                a.btn.btn-success.pull-left.blue-btn(href='/')
                     i.icon-chevron-left 
-                    &nbsp; &nbsp; Back To Login
+                    &nbsp; &nbsp; Back
                 button.btn.btn-success.pull-right.green-btn(type='submit')
-                    |Register Now &nbsp; 
-                    i.icon-chevron-right
+                    |Save &nbsp; 
+                    i.icon-save
 
   div(ng-controller="SidecaseCtrl")
     ul
