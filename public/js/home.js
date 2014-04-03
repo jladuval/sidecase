@@ -4,10 +4,10 @@ function SidecaseCtrl($scope, $timeout){
         $scope.projects = data;
         console.log(data);
     });
-  $scope.projects = [
+  /*$scope.projects = [
     {name: 'project1'},
     {name: 'project2'}
   ];
   $timeout(function(){
-    $scope.projects.push({name: 'project3'});}, 3000);
+    $scope.projects.push({name: 'project3'});}, 3000);*/
 }
