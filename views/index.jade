@@ -34,8 +34,8 @@ block content
                             {{project.name}}
                         p {{project.mainlang}}
                         p {{project.description}}
-                        span(ng-hide='project.collaborators.length < 1 || !project.teamsize') {{project.collaborators.length}} / {{project.teamsize}} team members &nbsp; &nbsp; 
-                        span
+                        span(ng-hide='project.collaborators.length < 1 || !project.teamsize || project.collaborators.length >= project.teamsize') {{project.collaborators.length}} / {{project.teamsize}} team members &nbsp; &nbsp; 
+                        span(ng-hide='project.collaborators.length >= project.teamsize')
                             a(href='mailto:{{project.email}}') join this team
 block scriptshead
   script(src='/js/home.js')
