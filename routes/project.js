@@ -45,35 +45,43 @@ exports.getprojects = function(req, res){
     .then(function(data){
         var projectsRes = [];
         var counter =  0;
+        var funcs = [];
+        for(var i = 0; i < data.length; i++){
+            funcs.push(function(user, repo, teamsize, email){                
+                github.repos.get(
+                {
+                    user: user,
+                    repo: repo
+                },
+                function(err, ghres) {
+
+                    counter++;
+                    if(err == null)
+                        projectsRes.push({
+                            owner : ghres.owner.login,
+                            name : ghres.name, 
+                            url : ghres.html_url,
+                            mainlang : ghres.language,
+                            description: ghres.description,
+                            collaborators: [],
+                            teamsize: teamsize,
+                            email : email
+                        });
+                    else
+                        console.log(err);
+                    if(counter === data.length){
+                        res.json(projectsRes);
+                    }
+                });
+            })
+        }
         for(var i = 0; i < data.length; i++){
             var url = data[i].url;
             var ghpath = urlparse.parse(url).pathname
             var user = ghpath.split('/')[1];
             var repo = ghpath.split('/')[2];
-            github.repos.get(
-            {
-                user: user,
-                repo: repo
-            },
-            function(err, ghres) {
-
-                counter++;
-                if(err == null)
-                    projectsRes.push({
-                        owner : ghres.owner.login,
-                        name : ghres.name, 
-                        url : ghres.html_url,
-                        mainlang : ghres.language,
-                        description: ghres.description,
-                        collaborators: []
-                    });
-                else
-                    console.log(err);
-                if(counter === data.length){
-                    res.json(projectsRes);
-                }
-            });
-        }       
+            funcs[i](user, repo, data[i].teamsize, data[i].email);
+        }
     });
 }
 
