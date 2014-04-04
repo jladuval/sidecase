@@ -30,11 +30,12 @@ function getGitHub(){
         protocol: "https",
         timeout: 5000
     });
-    github.authenticate({
-        type: "oauth",
-        key: process.env.githubclientid,
-        secret: process.env.githubsecret
-    }); 
+	if(process.env.githubclientid != null && process.env.githubsecret != null)
+		github.authenticate({
+			type: "oauth",
+			key: process.env.githubclientid,
+			secret: process.env.githubsecret
+		}); 
     return github;
 }
 

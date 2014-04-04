@@ -26,3 +26,4 @@ node_modules
 conf.js
 *.sublime-project
 *.sublime-workspace
+start.sh

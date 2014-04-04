@@ -5,7 +5,8 @@ block content
         form(action='/project/save', method='POST')
             .section-title.reg-header.animated.fadeInDown
                 h3.text-center Add a project
-                p Projects need to be hosted on Github(we use the api to get a bunch of info). It's free to sign up for and lets you manage your teams easily.
+                p Projects need to be hosted on Github(we use the api to get a bunch of info). It's free to sign up for and lets you manage your teams easily. 
+                strong Please make sure your url is in the format https://github.com/{owner}/{repo} or else it won't display correctly on the list of projects. E.g. https://github.com/jladuval/sidecase is the url for this website's repository.
             .clearfix
                .col-sm-12.registration-left-section.animated.fadeInUp
                     .reg-content
