@@ -9,11 +9,10 @@ var project = require('./routes/project');
 var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
-var conf = require('./conf.js');
 
 var app = express();
 
-mongoose.connect(conf.db);
+mongoose.connect(process.env.DB);
 
 // all environments
 app.set('port', process.env.PORT || 3000);

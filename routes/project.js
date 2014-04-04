@@ -1,6 +1,5 @@
 var mongoose = require('mongoose-q')(require('mongoose')),
     ProjectSchema = require('../data/projectschema.js').Project,
-    conf = require('../conf.js'),
     GitHubApi = require("github"),
     path = require("path"),
     Readable = require('stream').Readable,
@@ -33,8 +32,8 @@ function getGitHub(){
     });
     github.authenticate({
         type: "oauth",
-        key: conf.githubclientid,
-        secret: conf.githubsecret
+        key: process.env.githubclientid,
+        secret: process.env.githubsecret
     }); 
     return github;
 }
