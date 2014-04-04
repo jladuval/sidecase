@@ -15,4 +15,4 @@ To run this site on your home pc you'll need to do the following
    npm install
    DB=YOURDBCONNECTION node app.js
 ```
-5. If you want to automate running it so you don't have to type in the db variables each time make a file called start.sh and paste that last command into it. Then you can run that each time.
+If you want to automate running it so you don't have to type in the db variables each time make a file called start.sh and paste that last command into it. Then you can run that each time.
