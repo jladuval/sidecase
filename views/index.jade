@@ -10,7 +10,7 @@ block content
                 .clearfix
                     a.btn.btn-success.blue-btn.pull-left.small-font.offset-top-sm(href='/about')
                         i.icon-info
-                        &nbsp; &nbsp; I'm going to need some more info buddy
+                        |&nbsp; &nbsp; I'm going to need some more info buddy
                     a.btn.btn-success.blue-btn.pull-right.small-font.offset-top-sm(href='/prizes')
                         |Show me the prizes! &nbsp; 
                         i.icon-trophy
@@ -18,7 +18,7 @@ block content
                 .offset-top.clearfix
                     p.pull-left
                         i.icon-chevron-down
-                        &nbsp; &nbsp; Take a look at some of the projects below
+                        |&nbsp; &nbsp; Take a look at some of the projects below
                     a.btn.btn-success.pull-right.green-btn(href='/newproject')
                         |Or add your project &nbsp; 
                         i.icon-github
@@ -28,14 +28,14 @@ block content
                         .col-xs-6(ng-repeat="collaborator in project.collaborators")
                             a(href='{{collaborator.url}}')
                                 img.max-image(src='{{collaborator.avatar}}')
-                            {{collaborator.name}}
+                            |{{collaborator.name}}
                     .col-sm-6
                         a.blue(href='{{project.url}}')
-                            {{project.name}}
+                            |{{project.name}}
                         p {{project.mainlang}}
                         p {{project.description}}
                         span(ng-hide='project.collaborators.length < 1 || !project.teamsize || project.collaborators.length >= project.teamsize') {{project.collaborators.length}} / {{project.teamsize}} team members &nbsp; &nbsp; 
                         span(ng-hide='project.teamsize && project.collaborators.length >= project.teamsize')
-                            a(href='mailto:{{project.email}}') join this team
+                            a(href='mailto:{{project.email}}') join this team ({{project.email}})
 block scriptshead
   script(src='/js/home.js')

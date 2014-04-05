@@ -13,7 +13,6 @@ function SidecaseCtrl($scope, $http){
             for (var i in data){
                 project.collaborators.push(data[i]);
             }
-            $scope.$apply();
         });
     }
 }
