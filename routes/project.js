@@ -16,6 +16,9 @@ exports.save = function(req, res){
     project.email = req.body.email;
     project.url = req.body.url;
     project.teamsize = req.body.teamsize;
+    var ghpath = urlparse.parse(project.url).pathname
+    project.user = ghpath.split('/')[1];
+    project.repo = ghpath.split('/')[2];
     project.saveQ()
     .then(function(){
         res.redirect('');
@@ -76,11 +79,7 @@ exports.getprojects = function(req, res){
             })
         }
         for(var i = 0; i < data.length; i++){
-            var url = data[i].url;
-            var ghpath = urlparse.parse(url).pathname
-            var user = ghpath.split('/')[1];
-            var repo = ghpath.split('/')[2];
-            funcs[i](user, repo, data[i].teamsize, data[i].email);
+            funcs[i](data[i].user, data[i].repo, data[i].teamsize, data[i].email);
         }
     });
 }
