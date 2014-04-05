@@ -1,10 +1,31 @@
-.eternity-form{
-    margin-top: 60px;
+@media (max-width:767px){
+    .eternity-form{
+        margin-top: 0px;
+    }
+	.colorBg{
+		padding: 0;
+	}
+}
+
+@media (min-width:768px){
+    .eternity-form{
+        margin-top: 20px;
+    }
+	.colorBg{
+		padding: 50px 0;
+	}
+}
+
+@media (min-width:1200px){
+    .eternity-form{
+        margin-top: 30px;
+    }
+	.colorBg{
+		padding: 50px 0;
+	}
 }
 
 .colorBg{
-    padding: 50px 0;
-    overflow: hidden;
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
