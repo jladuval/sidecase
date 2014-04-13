@@ -24,12 +24,12 @@ block content
                         i.icon-github
             div(ng-controller="SidecaseCtrl")
                 .login-form-links.link1.animated.fadeInUp.row(ng-repeat="project in projects")
-                    .col-sm-6
+                    .col-sm-6.col-xs-12
                         .col-xs-6(ng-repeat="collaborator in project.collaborators")
                             a(href='{{collaborator.url}}')
                                 img.max-image(src='{{collaborator.avatar}}')
                             |{{collaborator.name}}
-                    .col-sm-6
+                    .col-sm-6.col-xs-12
                         a.blue(href='{{project.url}}')
                             |{{project.name}}
                         p {{project.mainlang}}
